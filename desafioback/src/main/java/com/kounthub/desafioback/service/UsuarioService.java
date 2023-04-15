@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.kounthub.desafioback.models.Repositorio;
@@ -21,6 +22,7 @@ public class UsuarioService {
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		ResponseEntity<Usuario> usuarioEntity = null;
+		Usuario usuario = null;
 		
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		
@@ -29,25 +31,30 @@ public class UsuarioService {
 		// Realiza a requisição
 		usuarioEntity = restTemplate.exchange(
 				"https://api.github.com/users/{user}", 
-				HttpMethod.GET, 
+				HttpMethod.GET,
 				entity, 
 				Usuario.class,
 				nome
 			);
-		Usuario usuario = usuarioEntity.getBody();
+		usuario = usuarioEntity.getBody();
 		
 		if (usuario != null) {
-			ResponseEntity<ArrayList<Repositorio>> responseRepo = 
-					restTemplate.exchange(
-							"https://api.github.com/users/{user}/repos",
-							HttpMethod.GET,
-							entity,
-							new ParameterizedTypeReference<ArrayList<Repositorio>>() {},
-							nome);
+			try {
+				ResponseEntity<ArrayList<Repositorio>> responseRepo = 
+						restTemplate.exchange(
+								"https://api.github.com/users/{user}/repos",
+								HttpMethod.GET,
+								entity,
+								new ParameterizedTypeReference<ArrayList<Repositorio>>() {},
+								nome);
+				
+				ArrayList<Repositorio> repositorios = responseRepo.getBody();
+				
+				usuario.setRepositorios(repositorios);
+			} catch (Exception e) {
+				
+			}
 			
-			ArrayList<Repositorio> repositorios = responseRepo.getBody();
-			
-			usuario.setRepositorios(repositorios);
 		}
 		
 		return usuario;
