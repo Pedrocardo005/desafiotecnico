@@ -1,11 +1,15 @@
 package com.kounthub.desafioback.models;
 
+import java.util.ArrayList;
+
 public class Usuario {
 private String login;
 	
 	private String created_at;
 	
 	private String updated_at;
+	
+	private ArrayList<Repositorio> repositorios;
 	
 	public Usuario () {
 		
@@ -33,5 +37,13 @@ private String login;
 
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
+	}
+
+	public ArrayList<Repositorio> getRepositorios() {
+		return repositorios;
+	}
+
+	public void setRepositorios(ArrayList<Repositorio> repositorios) {
+		this.repositorios = repositorios;
 	}
 }
