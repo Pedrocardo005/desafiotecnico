@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [nome, setNome] = useState("");
+
+  const onChangeNome = (value) => {
+    setNome(value.target.value);
+  };
+
+  const findUser = (value) => {
+    value.preventDefault();
+    
+    const options = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      }
+    };
+
+    fetch("http://localhost:8080?nome=" + nome, options)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+        <input value={nome} onChange={onChangeNome} type="text"/>
+        <input onClick={findUser} type="submit"/>
+      </form>
     </div>
   );
 }
