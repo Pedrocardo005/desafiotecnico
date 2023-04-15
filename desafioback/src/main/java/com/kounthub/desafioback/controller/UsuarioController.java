@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClientException;
 
+import com.kounthub.desafioback.models.Falha;
 import com.kounthub.desafioback.models.Usuario;
 import com.kounthub.desafioback.service.UsuarioService;
 
@@ -27,9 +28,9 @@ public class UsuarioController {
 			Usuario usuario = usuarioService.getUsuario(nome);
 			return ResponseEntity.status(HttpStatus.OK).body(usuario);
 		} catch (RestClientException e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Falha("Usuário não encontrado"));
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu algum erro interno");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Falha("Ocorreu algum erro interno"));
 		}
 	}
 }
