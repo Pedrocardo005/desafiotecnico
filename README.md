@@ -18,3 +18,31 @@ Consiste em duas aplicações: o backend e o frontend. A aplicação backend é 
  4. Abra o VSCode na pasta do projeto frontend.
  5. Rode o comando ```npm install``` na pasta do projeto
  6. Depois de ter instalado as dependências, rode o comando ```npm start```
+
+## Estrutura de pastas utilizadas no projeto
+```
+desafioback/ 
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── com/
+|   |   |   |   ├── kounthub/
+|   |   |   |   |   ├── desafioback/
+│   │   │   │   |   |   |   ├── controller/
+│   │   │   │   │   |   |   |   ├── UsuarioController.java  ## Comunica com a parte externa da aplicação
+│   │   │   │   |   |   |   ├── models/
+│   │   │   │   │   |   |   |   ├── Falha.java  ## Model para representar as falhas
+│   │   │   │   │   |   |   |   ├── Repositorio.java
+│   │   │   │   │   |   |   |   ├── Usuario.java
+│   │   │   │   |   |   |   ├── service/
+│   │   │   │   │   |   |   |   ├── UsuarioService.java  ## Implementa as regras de negócio da aplicação
+|   |   |   |   |   |   ├── DesafiobackApplication.java 
+│   │   ├── resources/
+│   │   │   ├── application.properties
+│   ├── test/
+│   │   ├── java/
+│   │   │   ├── com/
+|   |   |   |   ├── kounthub/
+|   |   |   |   |   ├── desafioback/
+│   │   │   │   |   |   ├── DesafiobackApplicationTests.java  ## Local onde fica os testes
+```
