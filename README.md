@@ -46,3 +46,16 @@ desafioback/
 |   |   |   |   |   ├── desafioback/
 │   │   │   │   |   |   ├── DesafiobackApplicationTests.java  ## Local onde fica os testes
 ```
+
+## Etapas de desenvolvimento
+### 1. Conhecendo a API do GitHub
+ Realizei diversos testes com a  API do GitHub e identifiquei quais informações seriam mais úteis.
+### 2. Como realizar uma requisição com spring boot
+Busquei por tutoriais de como utilizar o RestTemplate para efetuar uma requisição e obter os dados retornados em formato de um ou mais objetos.
+### 3. Planejamento dos requisitos do backend
+Como os models seriam construídos para tornar a comunicação mais eficiente. Planejei quais atributos seriam exibidos no front de cada model.
+### 4. Construção do frontend
+Construí o front com a biblioteca ReactJS. Utilizei também o useState para manipulação dos estados da aplicação.
+### 5. Comunicação do frontend com backend
+Comunicação do front com o back utilizando o Axios, uma biblioteca javascript que permite realizar requisições XMLHttpRequest (XHR).
+
