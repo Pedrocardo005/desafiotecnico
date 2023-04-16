@@ -38,7 +38,6 @@ function App() {
           <div>
             <div className='text-left auto col-xl-4 col-md-6'>
               <p>Login: {usuario.login}</p>
-              <p>Criado em: {usuario.created_at}</p>
               <p>Repositórios</p>
             </div>
             {
